@@ -19,3 +19,14 @@
   Downvote
   <%= @link.get_downvotes.size %>
 <% end %>
+
+<h3>
+  <%= @link.comments.count %> Comments
+</h3>
+
+<%= render :partial => @link.comments %>
+<%= simple_form_for [@link, Comment.new] do |f| %>
+  <%= f.text_area :body %>
+  <br>
+  <%= f.submit "Add Comment" %>
+<% end %>
